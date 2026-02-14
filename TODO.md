@@ -16,7 +16,7 @@ Ce document permet de suivre la progression de l'implémentation des fonctionnal
 ## ⭐⭐ 2 Étoiles : Expérience Utilisateur & Contenu
 - [ ] **Menu d'accueil**
 - [ ] **Écran de fin de jeu**
-- [ ] **Nouveaux biomes**
+- [X] **Nouveaux biomes**
 - [ ] **Élimination des ennemis**
 - [ ] **Système de sauvegarde**
 - [ ] **Bonus temporaires**
