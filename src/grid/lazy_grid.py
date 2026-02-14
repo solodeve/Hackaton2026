@@ -6,6 +6,7 @@ from tiles.water_tile import WaterTile
 from tiles.grass_tile import GrassTile
 from utils import Position
 from tiles.PortailTile import PortailTile
+from tiles.lava_tile import LavaTile
 
 
 
@@ -30,9 +31,9 @@ class LazyGrid:
         rand = rng.random()
         
         if rand < 0.5:   return  DesertTile(Position(x, y))  # Majorité de tuiles désertiques
-        elif rand > 0.501 and rand < 0.502: return PortailTile(Position(x,y))
-        elif rand >= 0.5 and rand <= 0.8: return GrassTile(Position(x,y)) # grasse 
-
+        elif 0.501<rand<0.502: return PortailTile(Position(x,y))
+        elif 0.5<=rand<=0.8: return GrassTile(Position(x,y)) # grasse 
+        elif 0.8 <= rand < 0.9:    return LavaTile(Position(x,y))        
         else:             return WaterTile(Position(x, y))   # Quelques tuiles d'eau
 
     def set_tile(self, x: int, y: int, tile: Tile):

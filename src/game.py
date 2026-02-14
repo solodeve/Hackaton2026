@@ -4,6 +4,7 @@ from entities.player import Player
 from grid.lazy_grid import LazyGrid
 from tiles.PortailTile import PortailTile
 from tiles.colors import BLUE
+from tiles.lava_tile import LavaTile
 from utils import Position
 from listener import Listener
 from tiles.water_tile import WaterTile
@@ -25,6 +26,7 @@ class GameEngine(Listener):
         ev_manager.register(self)
         self.running = False
         self.win = False
+        self.loose = False
         
         # Initialisation : Monde infini commençant à (1000, 1000)
         self.grid = LazyGrid(seed=random.randint(0, 99999))
@@ -45,6 +47,10 @@ class GameEngine(Listener):
             self.player.move(direction)
         if  isinstance(self.grid.get_tile(new_pos.x, new_pos.y), PortailTile):
             self.win = True
+        if isinstance(self.grid.get_tile(new_pos.x, new_pos.y), LavaTile):
+            self.loose = True
+
+            
         
             
     def update_timer(self):
