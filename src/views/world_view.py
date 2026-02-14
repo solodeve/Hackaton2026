@@ -17,7 +17,7 @@ class WorldView:
         self.tile_views = {
             DesertTile: DesertTileView(),
             WaterTile: WaterTileView(),
-            PortailTile: PortailTileView()
+            PortailTile: PortailTileView(),
             WaterTile: WaterTileView(),
             GrassTile: GrassTileView()
         }
