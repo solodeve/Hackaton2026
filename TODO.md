@@ -14,7 +14,7 @@ Ce document permet de suivre la progression de l'implémentation des fonctionnal
 ---
 
 ## ⭐⭐ 2 Étoiles : Expérience Utilisateur & Contenu
-- [ ] **Menu d'accueil**
+- [X] **Menu d'accueil**
 - [ ] **Écran de fin de jeu**
 - [X] **Nouveaux biomes**
 - [ ] **Élimination des ennemis**
