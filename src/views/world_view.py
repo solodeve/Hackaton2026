@@ -1,10 +1,12 @@
 import pygame
 from tiles.PortailTile import PortailTile
+from tiles.lava_tile import LavaTile
 from utils import CELL_SIZE, GRID_SIZE
 from tiles.desert_tile import DesertTile
 from tiles.water_tile import WaterTile
 from tiles.grass_tile import GrassTile
 from views.desert_tile_view import DesertTileView
+from views.lava_tile_view import LavaTileView
 from views.portail_view import PortailTileView
 from views.water_tile_view import WaterTileView
 from views.grass_tile_view import GrassTileView
@@ -19,7 +21,8 @@ class WorldView:
             WaterTile: WaterTileView(),
             PortailTile: PortailTileView(),
             WaterTile: WaterTileView(),
-            GrassTile: GrassTileView()
+            GrassTile: GrassTileView(),
+            LavaTile:LavaTileView()
         }
 
     def draw(self, screen, grid, player_pos):
