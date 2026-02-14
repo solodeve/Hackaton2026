@@ -74,22 +74,20 @@ class GraphicalView(Listener):
         
         
         # Delegate drawing to sub-views
-        if self.model.win:
-            myfont = pygame.font.SysFont('Comic Sans MS', 30)
-            textsurface = myfont.render('GAME WIN',False,(0,0,0))
-            GRID_SIZE//2
-            self.screen.blit(textsurface,(0,0))
-        else:
-            self.world_view.draw(self.screen, grid, player.pos)
-            self.player_view.draw(self.screen)
-        
 
         # self.model.menu
         if not self.model.menu.get_game_on():
             self.model.menu.afficher_menu(self.screen)
         else:
-            self.world_view.draw(self.screen, grid, player.pos)
-            self.player_view.draw(self.screen)
+            if self.model.win: 
+                myfont = pygame.font.SysFont('Comic Sans MS', 30)
+                textsurface = myfont.render('GAME WIN',False,(0,0,0))
+                GRID_SIZE//2
+                self.screen.blit(textsurface,(0,0))
+            else:
+                self.world_view.draw(self.screen, grid, player.pos)
+                self.player_view.draw(self.screen)
+        
 
             self.timer_view.draw(self.screen, self.model.timer)
 
