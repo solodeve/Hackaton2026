@@ -6,7 +6,12 @@ from utils import CELL_SIZE, GRID_SIZE, HEIGHT, WIDTH
 from listener import Listener
 from views.player_view import PlayerView
 from views.world_view import WorldView
+<<<<<<< Updated upstream
 from menu import Menu   
+=======
+from views.timer_view import TimerView
+
+>>>>>>> Stashed changes
 
 class GraphicalView(Listener):
     """
@@ -35,6 +40,7 @@ class GraphicalView(Listener):
         # Sub-views
         self.player_view = PlayerView()
         self.world_view = WorldView()
+        self.timer_view = TimerView()
 
     def notify(self, event):
         """
@@ -54,7 +60,6 @@ class GraphicalView(Listener):
             if not self.isinitialized:
                 return
             self.renderplay(self.model.player,self.model.grid)
-            # limit the redraw speed to 30 frames per second
             self.clock.tick(30)
 
     def renderplay(self,player,grid):
@@ -62,13 +67,17 @@ class GraphicalView(Listener):
         Fonction de rendu qui met à jour l'affichage du jeu en cours.
          - player: l'instance du joueur pour accéder à sa position et son état
          - grid: l'instance de la grille du jeu pour accéder à l'état du monde
+         - timer: l'instance du compe à rebours de la partie
         """
         self.draw(player,grid)
     
     def draw(self,player,grid):
         self.screen.fill((255, 255, 255))
+
+        
         
         # Delegate drawing to sub-views
+<<<<<<< Updated upstream
         if self.model.win:
             myfont = pygame.font.SysFont('Comic Sans MS', 30)
             textsurface = myfont.render('GAME WIN',False,(0,0,0))
@@ -85,6 +94,11 @@ class GraphicalView(Listener):
         else:
             self.world_view.draw(self.screen, grid, player.pos)
             self.player_view.draw(self.screen)
+=======
+        self.world_view.draw(self.screen, grid, player.pos)
+        self.player_view.draw(self.screen)
+        self.timer_view.draw(self.screen, self.model.timer)
+>>>>>>> Stashed changes
 
         pygame.display.flip()
 

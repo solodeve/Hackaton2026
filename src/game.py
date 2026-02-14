@@ -31,6 +31,8 @@ class GameEngine(Listener):
         self.player = Player(Position(1000, 1000))
         self.menu = Menu(ev_manager)
 
+        self.timer = 100
+
     def move_player(self,direction):
         """
         Tente de déplacer le joueur dans la direction spécifiée.
@@ -41,10 +43,27 @@ class GameEngine(Listener):
         new_pos.move(direction)
         if not isinstance(self.grid.get_tile(new_pos.x, new_pos.y), WaterTile):
             self.player.move(direction)
+<<<<<<< Updated upstream
         if  isinstance(self.grid.get_tile(new_pos.x, new_pos.y), PortailTile):
             self.win = True
         
             
+=======
+
+    def update_timer(self):
+        """Décrémente le timer et gère la fin de partie."""
+        if self.timer > 0:
+            self.timer -= 1/30
+        else:
+            self.timer = 0
+            self.on_time_out()
+
+    def on_time_out(self):
+        """Action à réaliser quand le temps est écoulé."""
+        print("Temps écoulé vous avez péri !")
+        self.running = False 
+
+>>>>>>> Stashed changes
     def notify(self, event):
         """
         Reçoit les événements du jeu et met à jour l'état du jeu en conséquence.
@@ -58,6 +77,9 @@ class GameEngine(Listener):
         if isinstance(event, evmgr.InputEvent):  
             self.move_player(event.input_type)
         
+
+        if isinstance(event, evmgr.TickEvent): # Timer
+            self.update_timer()
 
     def run(self):
         """
