@@ -9,6 +9,7 @@ from views.world_view import WorldView
 from menu import Menu   
 from views.timer_view import TimerView
 from views.score_view import ScoreView
+from views.tresor_view import TresorView
 
 
 class GraphicalView(Listener):
@@ -40,6 +41,7 @@ class GraphicalView(Listener):
         self.world_view = WorldView()
         self.timer_view = TimerView()
         self.score_view = ScoreView()
+        self.tresor_view = TresorView()
 
     def notify(self, event):
         """

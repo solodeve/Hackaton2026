@@ -6,6 +6,7 @@ from tiles.water_tile import WaterTile
 from tiles.grass_tile import GrassTile
 from utils import Position
 from tiles.PortailTile import PortailTile
+from tiles.tresor import TresorTile
 
 
 
@@ -31,6 +32,7 @@ class LazyGrid:
         
         if rand < 0.5:   return  DesertTile(Position(x, y))  # Majorité de tuiles désertiques
         elif rand > 0.501 and rand < 0.502: return PortailTile(Position(x,y))
+        elif rand > 0.502 and rand < 0.53: return TresorTile(Position(x,y))
         elif rand >= 0.5 and rand <= 0.8: return GrassTile(Position(x,y)) # grasse 
 
         else:             return WaterTile(Position(x, y))   # Quelques tuiles d'eau

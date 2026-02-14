@@ -8,6 +8,7 @@ from utils import Position
 from listener import Listener
 from tiles.water_tile import WaterTile
 from menu import Menu
+from tiles.tresor import TresorTile
 
 class GameEngine(Listener):
     """
@@ -46,6 +47,9 @@ class GameEngine(Listener):
             self.player.move(direction)
         if  isinstance(self.grid.get_tile(new_pos.x, new_pos.y), PortailTile):
             self.win = True
+        if  isinstance(self.grid.get_tile(new_pos.x, new_pos.y), TresorTile):
+            self.score+=1
+
         
             
     def update_timer(self):
