@@ -6,6 +6,7 @@ from utils import CELL_SIZE, GRID_SIZE, HEIGHT, WIDTH
 from listener import Listener
 from views.player_view import PlayerView
 from views.world_view import WorldView
+from menu import Menu   
 
 class GraphicalView(Listener):
     """
@@ -68,8 +69,14 @@ class GraphicalView(Listener):
         self.screen.fill((255, 255, 255))
         
         # Delegate drawing to sub-views
-        self.world_view.draw(self.screen, grid, player.pos)
-        self.player_view.draw(self.screen)
+        
+
+        # self.model.menu
+        if not self.model.menu.get_game_on():
+            self.model.menu.afficher_menu(self.screen)
+        else:
+            self.world_view.draw(self.screen, grid, player.pos)
+            self.player_view.draw(self.screen)
 
         pygame.display.flip()
 

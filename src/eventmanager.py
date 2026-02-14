@@ -46,6 +46,15 @@ class InputEvent(Event):
     def __str__(self) -> str:
         return f"{super().__str__()}: type={self.input_type}, pos={self.click_pos}"
 
+class MouseEvent(Event):
+    """Événement pour signaler une entrée utilisateur."""
+    def __init__(self, click_pos: tuple[int, int]):
+            self.click_pos = click_pos
+
+    def __str__(self) -> str:
+        return f"{super().__str__()}: pos={self.click_pos}"
+
+
 
 
 

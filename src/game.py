@@ -6,6 +6,7 @@ from tiles.colors import BLUE
 from utils import Position
 from listener import Listener
 from tiles.water_tile import WaterTile
+from menu import Menu
 
 class GameEngine(Listener):
     """
@@ -26,6 +27,7 @@ class GameEngine(Listener):
         # Initialisation : Monde infini commençant à (1000, 1000)
         self.grid = LazyGrid(seed=random.randint(0, 99999))
         self.player = Player(Position(1000, 1000))
+        self.menu = Menu(ev_manager)
 
     def move_player(self,direction):
         """
@@ -50,13 +52,15 @@ class GameEngine(Listener):
 
         if isinstance(event, evmgr.InputEvent):  
             self.move_player(event.input_type)
+        
 
     def run(self):
         """
         Démarre la boucle principale du jeu en postant des événements de Tick pour mettre à jour le jeu.  
         """
-        self.running = False
+        self.running = True
         self.ev_manager.post(evmgr.InitializeEvent())
+        
         while self.running:
             newTick = evmgr.TickEvent()
             self.ev_manager.post(newTick)

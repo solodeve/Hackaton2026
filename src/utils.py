@@ -25,8 +25,8 @@ class Position:
             case Move.DOWN:
                 self.y += 1
             case Move.LEFT:
-                self.x += 1
-            case Move.RIGHT:
                 self.x -= 1
+            case Move.RIGHT:
+                self.x += 1
             case _:
                 raise ValueError(f"Direction non reconnue : {direction}")
