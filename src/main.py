@@ -7,6 +7,7 @@ import controller
 """
  Les commentaires sont à retirer lorsque vous voulez comprendre
   comment insérer du code cpp en python
+  -ok yassine supprime ça
 """
 
 

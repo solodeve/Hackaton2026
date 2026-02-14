@@ -6,6 +6,7 @@ from tiles.colors import BLUE
 from utils import Position
 from listener import Listener
 from tiles.water_tile import WaterTile
+from tiles.desert_tile import DesertTile
 
 class GameEngine(Listener):
     """
@@ -55,7 +56,7 @@ class GameEngine(Listener):
         """
         Démarre la boucle principale du jeu en postant des événements de Tick pour mettre à jour le jeu.  
         """
-        self.running = False
+        self.running = True
         self.ev_manager.post(evmgr.InitializeEvent())
         while self.running:
             newTick = evmgr.TickEvent()
