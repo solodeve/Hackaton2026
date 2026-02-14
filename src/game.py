@@ -1,12 +1,14 @@
 import random
 import eventmanager as evmgr
 from entities.player import Player
+from entities.ennemy import Ennemy
 from grid.lazy_grid import LazyGrid
 from tiles.colors import BLUE
 from utils import Position
 from listener import Listener
 from tiles.water_tile import WaterTile
 from tiles.desert_tile import DesertTile
+import threading
 
 class GameEngine(Listener):
     """
@@ -27,6 +29,18 @@ class GameEngine(Listener):
         # Initialisation : Monde infini commençant à (1000, 1000)
         self.grid = LazyGrid(seed=random.randint(0, 99999))
         self.player = Player(Position(1000, 1000))
+
+        # positions = [Position(200, 200), Position(400, 200), Position(200, 400)]
+        # self.entities = []
+        # self.entity2 = Ennemy(Position(500, 500))
+        # for pos in positions:
+        #     t = threading.Thread(target=self.entity2.move(), args=())
+        #     self.entities.append(t)
+
+        # for t in self.entities:
+        #     t.start()
+        
+        self.entity = Ennemy(Position(500, 500))
 
     def move_player(self,direction):
         """
@@ -61,3 +75,6 @@ class GameEngine(Listener):
         while self.running:
             newTick = evmgr.TickEvent()
             self.ev_manager.post(newTick)
+        
+        for t in self.entities:
+            t.join()

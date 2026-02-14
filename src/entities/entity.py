@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 from actions.action import Action
 from utils import Position, Move
+from random import randint
 
 
 class Entity(ABC):

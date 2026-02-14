@@ -5,6 +5,7 @@ from tiles.colors import BLACK
 from utils import CELL_SIZE, GRID_SIZE, HEIGHT, WIDTH
 from listener import Listener
 from views.player_view import PlayerView
+from views.entity_view import EntityView
 from views.world_view import WorldView
 
 class GraphicalView(Listener):
@@ -34,6 +35,7 @@ class GraphicalView(Listener):
         # Sub-views
         self.player_view = PlayerView()
         self.world_view = WorldView()
+        self.entity_view = EntityView()
 
     def notify(self, event):
         """
@@ -52,24 +54,25 @@ class GraphicalView(Listener):
         elif isinstance(event, evmgr.TickEvent):
             if not self.isinitialized:
                 return
-            self.renderplay(self.model.player,self.model.grid)
+            self.renderplay(self.model.player,self.model.grid, self.model.entity)
             # limit the redraw speed to 30 frames per second
             self.clock.tick(30)
 
-    def renderplay(self,player,grid):
+    def renderplay(self,player,grid,entity):
         """
         Fonction de rendu qui met à jour l'affichage du jeu en cours.
          - player: l'instance du joueur pour accéder à sa position et son état
          - grid: l'instance de la grille du jeu pour accéder à l'état du monde
         """
-        self.draw(player,grid)
+        self.draw(player,grid, entity)
     
-    def draw(self,player,grid):
+    def draw(self,player,grid, entity):
         self.screen.fill((255, 255, 255))
         
         # Delegate drawing to sub-views
         self.world_view.draw(self.screen, grid, player.pos)
         self.player_view.draw(self.screen)
+        self.entity_view.draw(self.screen, entity)
 
         pygame.display.flip()
 
