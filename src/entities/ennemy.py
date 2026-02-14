@@ -8,6 +8,9 @@ from entities.entity import Entity
 
 class Ennemy(Entity):
     """Classe de base pour les entités dans le monde de jeu."""
+    def __init__(self):
+        self._cache = [200, 200]    
+    
     def move(self):
         speed = [randint(-1, 1), randint(-1, 1)]
         

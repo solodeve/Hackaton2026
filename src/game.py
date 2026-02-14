@@ -30,12 +30,10 @@ class GameEngine(Listener):
         self.grid = LazyGrid(seed=random.randint(0, 99999))
         self.player = Player(Position(1000, 1000))
 
-        # positions = [Position(200, 200), Position(400, 200), Position(200, 400)]
-        # self.entities = []
         # self.entity2 = Ennemy(Position(500, 500))
-        # for pos in positions:
-        #     t = threading.Thread(target=self.entity2.move(), args=())
-        #     self.entities.append(t)
+
+        # t = threading.Thread(target=self.entity2.move(), args=())
+        # self.entities.append(t)
 
         # for t in self.entities:
         #     t.start()
@@ -75,6 +73,3 @@ class GameEngine(Listener):
         while self.running:
             newTick = evmgr.TickEvent()
             self.ev_manager.post(newTick)
-        
-        for t in self.entities:
-            t.join()

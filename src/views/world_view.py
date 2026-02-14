@@ -2,6 +2,8 @@ import pygame
 from utils import CELL_SIZE, GRID_SIZE
 from tiles.desert_tile import DesertTile
 from tiles.water_tile import WaterTile
+from entities.ennemy import Ennemy
+from views.entity_view import EntityView
 from views.desert_tile_view import DesertTileView
 from views.water_tile_view import WaterTileView
 

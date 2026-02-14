@@ -72,7 +72,7 @@ class GraphicalView(Listener):
         # Delegate drawing to sub-views
         self.world_view.draw(self.screen, grid, player.pos)
         self.player_view.draw(self.screen)
-        self.entity_view.draw(self.screen, entity)
+        # self.entity_view.draw(self.screen)
 
         pygame.display.flip()
 
