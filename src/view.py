@@ -8,6 +8,7 @@ from views.player_view import PlayerView
 from views.world_view import WorldView
 from menu import Menu   
 from views.timer_view import TimerView
+from views.score_view import ScoreView
 
 
 class GraphicalView(Listener):
@@ -38,6 +39,7 @@ class GraphicalView(Listener):
         self.player_view = PlayerView()
         self.world_view = WorldView()
         self.timer_view = TimerView()
+        self.score_view = ScoreView()
 
     def notify(self, event):
         """
@@ -90,6 +92,7 @@ class GraphicalView(Listener):
         
 
                 self.timer_view.draw(self.screen, self.model.timer)
+                self.score_view.draw(self.screen, self.model.score)
 
         pygame.display.flip()
 
