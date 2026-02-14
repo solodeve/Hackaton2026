@@ -3,8 +3,8 @@ from tiles.colors import *
 from tiles.desert_tile import DesertTile
 from tiles.tile import Tile
 from tiles.water_tile import WaterTile
+from tiles.grass_tile import GrassTile
 from utils import Position
-
 
 
 
@@ -28,7 +28,8 @@ class LazyGrid:
         rng = random.Random(f"{self.seed}_{x}_{y}")
         rand = rng.random()
         
-        if rand > 0.1:   return  DesertTile(Position(x, y))  # Majorité de tuiles désertiques
+        if rand < 0.5:   return  DesertTile(Position(x, y))  # Majorité de tuiles désertiques
+        elif rand >= 0.5 and rand <= 0.8: return GrassTile(Position(x,y)) # grasse 
         else:             return WaterTile(Position(x, y))   # Quelques tuiles d'eau
 
     def set_tile(self, x: int, y: int, tile: Tile):
