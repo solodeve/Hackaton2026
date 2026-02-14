@@ -43,13 +43,10 @@ class GameEngine(Listener):
         new_pos.move(direction)
         if not isinstance(self.grid.get_tile(new_pos.x, new_pos.y), WaterTile):
             self.player.move(direction)
-<<<<<<< Updated upstream
         if  isinstance(self.grid.get_tile(new_pos.x, new_pos.y), PortailTile):
             self.win = True
         
             
-=======
-
     def update_timer(self):
         """Décrémente le timer et gère la fin de partie."""
         if self.timer > 0:
@@ -63,7 +60,6 @@ class GameEngine(Listener):
         print("Temps écoulé vous avez péri !")
         self.running = False 
 
->>>>>>> Stashed changes
     def notify(self, event):
         """
         Reçoit les événements du jeu et met à jour l'état du jeu en conséquence.

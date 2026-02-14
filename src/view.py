@@ -6,12 +6,9 @@ from utils import CELL_SIZE, GRID_SIZE, HEIGHT, WIDTH
 from listener import Listener
 from views.player_view import PlayerView
 from views.world_view import WorldView
-<<<<<<< Updated upstream
 from menu import Menu   
-=======
 from views.timer_view import TimerView
 
->>>>>>> Stashed changes
 
 class GraphicalView(Listener):
     """
@@ -77,7 +74,6 @@ class GraphicalView(Listener):
         
         
         # Delegate drawing to sub-views
-<<<<<<< Updated upstream
         if self.model.win:
             myfont = pygame.font.SysFont('Comic Sans MS', 30)
             textsurface = myfont.render('GAME WIN',False,(0,0,0))
@@ -94,11 +90,8 @@ class GraphicalView(Listener):
         else:
             self.world_view.draw(self.screen, grid, player.pos)
             self.player_view.draw(self.screen)
-=======
-        self.world_view.draw(self.screen, grid, player.pos)
-        self.player_view.draw(self.screen)
-        self.timer_view.draw(self.screen, self.model.timer)
->>>>>>> Stashed changes
+
+            self.timer_view.draw(self.screen, self.model.timer)
 
         pygame.display.flip()
 
