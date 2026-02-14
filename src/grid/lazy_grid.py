@@ -29,8 +29,6 @@ class LazyGrid:
         rng = random.Random(f"{self.seed}_{x}_{y}")
         rand = rng.random()
         
-        if rand < 0.7:   return  DesertTile(Position(x, y))  # Majorité de tuiles désertiques
-        elif rand < 0.701 :   return PortailTile(Position(x,y)) # Egzlité donne un portail
         if rand < 0.5:   return  DesertTile(Position(x, y))  # Majorité de tuiles désertiques
         elif rand >= 0.5 and rand <= 0.8: return GrassTile(Position(x,y)) # grasse 
         else:             return WaterTile(Position(x, y))   # Quelques tuiles d'eau

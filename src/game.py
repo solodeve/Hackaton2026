@@ -7,7 +7,7 @@ from tiles.colors import BLUE
 from utils import Position
 from listener import Listener
 from tiles.water_tile import WaterTile
-from tiles.desert_tile import DesertTile
+from menu import Menu
 
 class GameEngine(Listener):
     """
@@ -28,6 +28,7 @@ class GameEngine(Listener):
         # Initialisation : Monde infini commençant à (1000, 1000)
         self.grid = LazyGrid(seed=random.randint(0, 99999))
         self.player = Player(Position(1000, 1000))
+        self.menu = Menu(ev_manager)
 
     def move_player(self,direction):
         """
@@ -54,6 +55,7 @@ class GameEngine(Listener):
 
         if isinstance(event, evmgr.InputEvent):  
             self.move_player(event.input_type)
+        
 
     def run(self):
         """
@@ -61,6 +63,7 @@ class GameEngine(Listener):
         """
         self.running = True
         self.ev_manager.post(evmgr.InitializeEvent())
+        
         while self.running:
             newTick = evmgr.TickEvent()
             self.ev_manager.post(newTick)

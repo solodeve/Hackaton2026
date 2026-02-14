@@ -28,15 +28,14 @@ class Keyboard(Listener):
         """
 
         if isinstance(event, evmgr.TickEvent):
-            # Called for each game tick. We check our keyboard presses here.
             for pgev in pygame.event.get():
-                # handle window manager closing our window
+                
+                if pgev.type == pygame.MOUSEBUTTONDOWN:
+                    click_pos = pgev.pos
+                    self.ev_manager.post(evmgr.MouseEvent(click_pos))
+
                 if pgev.type == pygame.QUIT:
                     self.ev_manager.post(evmgr.QuitEvent())
-                    # The GraphicalView calls pygame.quit() upon
-                    # receiving the QuitEvent. We shouldn't return to
-                    # the top of the loop here. `pygame.event` might be
-                    # undefined.
                     break
                 # handle key down events
                 if pgev.type == pygame.KEYDOWN:
