@@ -5,3 +5,4 @@ BLUE = (0, 0, 255)      # Bleu
 LAVA = (255, 0, 0)      # Rouge
 SPECIAL = (148, 0, 211) # Violet
 BLACK = (0, 0, 0)      # Noir
+GREEN = (0, 128, 0)     #Vert

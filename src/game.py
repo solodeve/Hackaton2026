@@ -2,6 +2,7 @@ import random
 import eventmanager as evmgr
 from entities.player import Player
 from grid.lazy_grid import LazyGrid
+from tiles.PortailTile import PortailTile
 from tiles.colors import BLUE
 from utils import Position
 from listener import Listener
@@ -37,6 +38,8 @@ class GameEngine(Listener):
         new_pos.move(direction)
         if not isinstance(self.grid.get_tile(new_pos.x, new_pos.y), WaterTile):
             self.player.move(direction)
+        if  isinstance(self.grid.get_tile(new_pos.x, new_pos.y), PortailTile):
+            self.running = False
             
     def notify(self, event):
         """
@@ -55,7 +58,7 @@ class GameEngine(Listener):
         """
         Démarre la boucle principale du jeu en postant des événements de Tick pour mettre à jour le jeu.  
         """
-        self.running = False
+        self.running = True
         self.ev_manager.post(evmgr.InitializeEvent())
         while self.running:
             newTick = evmgr.TickEvent()

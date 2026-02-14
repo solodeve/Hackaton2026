@@ -1,8 +1,10 @@
 import pygame
+from tiles.PortailTile import PortailTile
 from utils import CELL_SIZE, GRID_SIZE
 from tiles.desert_tile import DesertTile
 from tiles.water_tile import WaterTile
 from views.desert_tile_view import DesertTileView
+from views.portail_view import PortailTileView
 from views.water_tile_view import WaterTileView
 
 class WorldView:
@@ -12,7 +14,8 @@ class WorldView:
     def __init__(self):
         self.tile_views = {
             DesertTile: DesertTileView(),
-            WaterTile: WaterTileView()
+            WaterTile: WaterTileView(),
+            PortailTile: PortailTileView()
         }
 
     def draw(self, screen, grid, player_pos):
