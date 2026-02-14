@@ -89,7 +89,7 @@ class GraphicalView(Listener):
                 self.player_view.draw(self.screen)
         
 
-            self.timer_view.draw(self.screen, self.model.timer)
+                self.timer_view.draw(self.screen, self.model.timer)
 
         pygame.display.flip()
 
