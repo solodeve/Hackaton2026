@@ -32,7 +32,8 @@ class GameEngine(Listener):
         self.menu = Menu(ev_manager)
 
         self.timer = 100
-
+        self.score = 0
+        
     def move_player(self,direction):
         """
         Tente de déplacer le joueur dans la direction spécifiée.
